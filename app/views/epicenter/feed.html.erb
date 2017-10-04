@@ -1,0 +1,14 @@
+<h1>@<%= current_user.username %>'s Chirp Feed</h1>
+
+<div>
+    <% @following_tweet.each do |tweet|%>
+    <div>
+        <p>
+            <%= tweet.user.username %>
+        </p>
+        <p>
+            <%= tweet.message.html_safe %>
+        </p>
+    </div>
+    <% end %>
+</div>
