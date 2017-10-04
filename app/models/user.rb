@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :tweets
   
+  validates :username, presence: true, uniqueness: true
+  
   mount_uploader :avatar, AvatarUploader
+  
 end
