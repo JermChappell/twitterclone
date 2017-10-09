@@ -30,7 +30,7 @@ class Tweet < ActiveRecord::Base
             index = array.map { |word| word.clude?("http://") } .index(ture)
             url = array[index]
             
-            array[index] = "<a href='#{self.link}' target='_blank'#{url}</a>"
+            array[index] = "<a href='#{self.link}' target='_blank'>#{url}</a>"
             
             self.message =array.join(" ")
             

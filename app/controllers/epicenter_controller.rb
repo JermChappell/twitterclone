@@ -15,11 +15,35 @@ class EpicenterController < ApplicationController
       end
     end
   end
-
+  def all_users
+    @users = User.all
+  end
+  
   def show_user
     @user = User.find(params[:id])
   end
-
+ 
+  def following
+    @user = User.find(params[:id])
+    @users = []
+    
+    User.all.each do |user|
+      if @user.following.include?('id' => user.id.to_s)
+        @users.push(user)
+      end
+  end
+end
+  def followers
+       @user = User.find(params[:id])
+      @users = []
+    
+    user.all.each do |user|
+      if user.following.include?('id' => @user.id.to_s)
+        @users.push(user)
+      end
+    end
+    
+  end
   def now_following
     current_user.following.push(id: params[:id])    
     current_user.save
@@ -32,3 +56,4 @@ class EpicenterController < ApplicationController
     current_user.save
   end
 end
+
